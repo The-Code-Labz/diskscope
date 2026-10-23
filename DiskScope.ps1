@@ -389,7 +389,7 @@ function Show-DrivePicker {
     for ($i = 0; $i -lt $drives.Count; $i++) {
       $d = $drives[$i]
       $used = $d.TotalSize - $d.AvailableFreeSpace
-      $pct = [Math]::Round(100.0 * $used / [Math]::Max(1, $d.TotalSize), 1)
+      $pct = [Math]::Round(100.0 * $used / [Math]::Max(1L, $d.TotalSize), 1)
       $line = ('  {0}  {1} used of {2} ({3}%)  {4} free' -f $d.Name, (Format-Size $used), (Format-Size $d.TotalSize), $pct, (Format-Size $d.AvailableFreeSpace))
       if ($i -eq $sel) { Write-Line ("> " + $line) '97;44' } else { Write-Line ('  ' + $line) }
     }
